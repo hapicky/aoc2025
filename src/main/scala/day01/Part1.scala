@@ -13,7 +13,7 @@ object Part1 {
     val delta = direction match {
       case 'L' => -distance
       case 'R' => distance
-      case _ => sys.error(s"invalid direction: $direction")
+      case _   => sys.error(s"invalid direction: $direction")
     }
 
     val nextPoint =
@@ -31,7 +31,8 @@ object Part1 {
     )
 
     val finalState =
-      Source.fromFile(inputPath)
+      Source
+        .fromFile(inputPath)
         .getLines()
         .foldLeft(State(50, 0))(rotate)
 
