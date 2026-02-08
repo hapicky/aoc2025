@@ -84,3 +84,37 @@ class Part2Test extends AnyFunSuite:
         )
       )
     }
+
+  test("countArrivedAtZero"):
+    val cases = Table(
+      ("pointFrom", "delta", "expected"),
+      (0, 1, 0),
+      (0, 99, 0),
+      (0, 100, 1),
+      (0, 199, 1),
+      (0, 200, 2),
+      (0, 201, 2),
+      (0, -1, 0),
+      (0, -99, 0),
+      (0, -100, 1),
+      (1, 1, 0),
+      (1, 98, 0),
+      (1, 99, 1),
+      (1, 100, 1),
+      (1, 198, 1),
+      (1, 199, 2),
+      (1, 200, 2),
+      (2, -1, 0),
+      (2, -2, 1),
+      (2, -3, 1),
+      (2, -101, 1),
+      (2, -102, 2),
+      (2, -103, 2),
+      (2, -201, 2),
+      (2, -202, 3),
+      (2, -203, 3)
+    )
+
+    forAll(cases) { (pointFrom, delta, expected) =>
+      assert(Part2.countArrivedAtZero(pointFrom, delta) == expected)
+    }

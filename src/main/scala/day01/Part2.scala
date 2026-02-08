@@ -7,6 +7,18 @@ object Part2 {
 
   val SIZE = 100
 
+  def countArrivedAtZero(pointFrom: Int, delta: Int): Int = {
+    if (pointFrom == 0)
+      return Math.abs(delta) / SIZE
+
+    val pointTo = pointFrom + delta
+    pointTo match {
+      case 0                => 1
+      case _ if pointTo > 0 => pointTo / SIZE
+      case _ if pointTo < 0 => Math.abs(pointTo / SIZE) + 1
+    }
+  }
+
   def rotate(state: State, rotation: String): State = {
     val direction = rotation.head
     val distance = rotation.tail.toInt
@@ -16,18 +28,13 @@ object Part2 {
       case _   => sys.error(s"invalid direction: $direction")
     }
 
-    val nextPoint = state.point + delta
+    val nextPoint =
+      Math.floorMod(state.point + delta, SIZE)
 
-    val count =
-      if (nextPoint == 0) 1
-      else if (nextPoint >= SIZE) nextPoint / SIZE
-      else if (nextPoint < 0)
-        if (state.point == 0) -nextPoint / SIZE else -nextPoint / SIZE + 1
-      else 0
+    val nextPassword =
+      state.password + countArrivedAtZero(state.point, delta)
 
-    val nextPassword = state.password + count
-
-    State(Math.floorMod(nextPoint, SIZE), nextPassword)
+    State(nextPoint, nextPassword)
   }
 
   def main(args: Array[String]): Unit = {
