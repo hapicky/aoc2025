@@ -13,4 +13,5 @@ sbt "runMain day01.Part1 input/day01/sample.txt"
 
 ```sh
 sbt test
+sbt "testOnly day01.Part1Test"
 ```

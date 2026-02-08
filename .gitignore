@@ -2,3 +2,4 @@ target/
 input/**/input.txt
 sbt.json
 .metals
+.vscode
