@@ -3,6 +3,12 @@
 - Java 17 or later
 - sbt
 
+# Generate boilerplate code
+
+```sh
+sbt "genPart1 day01"
+```
+
 # Run
 
 ```sh
