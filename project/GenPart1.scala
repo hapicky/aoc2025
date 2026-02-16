@@ -20,12 +20,15 @@ object GenPart1 {
 
     val mainOut = base / "src/main/scala" / day / "Part1.scala"
     val testOut = base / "src/test/scala" / day / "Part1Test.scala"
+    val inputOut = base / "input" / day / "sample.txt"
 
     IO.createDirectory(mainOut.getParentFile)
     IO.createDirectory(testOut.getParentFile)
+    IO.createDirectory(inputOut.getParentFile)
 
     IO.write(mainOut, render(mainTpl))
     IO.write(testOut, render(testTpl))
+    IO.write(inputOut, "")
 
     state
   }
