@@ -11,9 +11,9 @@ object Part1 {
 
     val (_, turnedOn) = (0 until TURN_ON_COUNT)
       .foldLeft((0, Vector.empty[Int])) { case ((start, selected), i) =>
-        val end = batteries.length - TURN_ON_COUNT + i + 1
-        val (battery, index) = batteries.slice(start, end).zipWithIndex.maxBy(_._1)
-        (start + index + 1, selected :+ battery)
+        val end = batteries.length - TURN_ON_COUNT + i
+        val selectIndex = (start to end).maxBy(batteries)
+        (selectIndex + 1, selected :+ batteries(selectIndex))
       }
 
     turnedOn.mkString.toInt
