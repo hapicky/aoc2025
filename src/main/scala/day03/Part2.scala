@@ -2,11 +2,11 @@ package day03
 
 import scala.io.Source
 
-object Part1 {
+object Part2 {
 
-  val TURN_ON_COUNT = 2
+  val TURN_ON_COUNT = 12
 
-  def largestJoltage(bank: String): Int = {
+  def largestJoltage(bank: String): Long = {
     val batteries = bank.map(_.asDigit)
 
     val (_, turnedOn) = (0 until TURN_ON_COUNT)
@@ -16,15 +16,15 @@ object Part1 {
         (selectIndex + 1, selected :+ batteries(selectIndex))
       }
 
-    turnedOn.mkString.toInt
+    turnedOn.mkString.toLong
   }
 
   def main(args: Array[String]): Unit = {
     val inputPath = args.headOption.getOrElse(
-      sys.error("usage: 'sbt \"runMain day03.Part1 input/day03/sample.txt\"'")
+      sys.error("usage: 'sbt \"runMain day03.Part2 input/day03/sample.txt\"'")
     )
 
-    val answer =
+    val answer: Long =
       Source
         .fromFile(inputPath)
         .getLines()
