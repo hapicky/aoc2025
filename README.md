@@ -7,6 +7,7 @@
 
 ```sh
 sbt "genPart1 day01"
+sbt "genPart2 day01"
 ```
 
 # Run
