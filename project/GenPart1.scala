@@ -22,6 +22,10 @@ object GenPart1 {
     val testOut = base / "src/test/scala" / day / "Part1Test.scala"
     val inputOut = base / "input" / day / "sample.txt"
 
+    if (mainOut.exists()) {
+      sys.error(s"${mainOut.getAbsolutePath} already exists.")
+    }
+
     IO.createDirectory(mainOut.getParentFile)
     IO.createDirectory(testOut.getParentFile)
     IO.createDirectory(inputOut.getParentFile)

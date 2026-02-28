@@ -20,6 +20,10 @@ object GenPart2 {
     val mainOut = mainDir / "Part2.scala"
     val testOut = testDir / "Part2Test.scala"
 
+    if (mainOut.exists()) {
+      sys.error(s"${mainOut.getAbsolutePath} already exists.")
+    }
+
     IO.write(mainOut, render(mainDir / "Part1.scala"))
     IO.write(testOut, render(testDir / "Part1Test.scala"))
 
